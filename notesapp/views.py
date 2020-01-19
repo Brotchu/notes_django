@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib import messages
 import os
 
 # Create your views here.
@@ -24,4 +25,5 @@ def save(request):
 	note_file = open("fs/"+name,"w")
 	note_file.write(content)
 	note_file.close()
+	messages.success(request, "Note saved")
 	return render(request, 'home.html', {'name' : 'Saved'})
